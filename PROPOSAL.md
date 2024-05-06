@@ -1,4 +1,5 @@
 ------------- Proposal -------------
+
 Idea: BakeShop, where you can order bakery goods and search for recipes
 
 Users: Owner, Customer
@@ -16,6 +17,7 @@ As a customer:
 
 
 ------------- Planning How To -------------
+
 Login: creation? then store, then accesses - happy path for now, use FileIO;
 
 marking not available: List of ingredients? That each recipe will reference to allow recipe 
@@ -27,5 +29,6 @@ order bake items: do while loop for asking if they want to add more items, bool
 
 search recipes: ? not sure yet, probably similar to login, have fileIO where recipes are stored?
 
+----------- Created files ----------
+ - Recipes by Ingredients xl (values true/false) - where if an ingredient is not available, it will check this table for which recipes are impacted and then update the "store front" shopping aspect of buying baked good;
 
-*/
