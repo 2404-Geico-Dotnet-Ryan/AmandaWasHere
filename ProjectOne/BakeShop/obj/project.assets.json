@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\U1H071\\Revature Training\\TestProject2024\\AmandaRevature2024\\Projects\\BakeShop\\BakeShop.csproj",
+      "projectUniqueName": "C:\\Users\\U1H071\\Revature Training\\TestProject2024\\AmandaWasHere\\ProjectOne\\BakeShop\\BakeShop.csproj",
       "projectName": "BakeShop",
-      "projectPath": "C:\\Users\\U1H071\\Revature Training\\TestProject2024\\AmandaRevature2024\\Projects\\BakeShop\\BakeShop.csproj",
+      "projectPath": "C:\\Users\\U1H071\\Revature Training\\TestProject2024\\AmandaWasHere\\ProjectOne\\BakeShop\\BakeShop.csproj",
       "packagesPath": "C:\\Users\\U1H071\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\U1H071\\Revature Training\\TestProject2024\\AmandaRevature2024\\Projects\\BakeShop\\obj\\",
+      "outputPath": "C:\\Users\\U1H071\\Revature Training\\TestProject2024\\AmandaWasHere\\ProjectOne\\BakeShop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\U1H071\\AppData\\Roaming\\NuGet\\NuGet.Config"

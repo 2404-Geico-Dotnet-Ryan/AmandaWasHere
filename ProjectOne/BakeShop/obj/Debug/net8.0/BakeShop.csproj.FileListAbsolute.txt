@@ -1,0 +1,15 @@
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\bin\Debug\net8.0\BakeShop.exe
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\bin\Debug\net8.0\BakeShop.deps.json
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\bin\Debug\net8.0\BakeShop.runtimeconfig.json
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\bin\Debug\net8.0\BakeShop.dll
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\bin\Debug\net8.0\BakeShop.pdb
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.AssemblyInfoInputs.cache
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.AssemblyInfo.cs
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.csproj.CoreCompileInputs.cache
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.sourcelink.json
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.dll
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\refint\BakeShop.dll
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.pdb
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\BakeShop.genruntimeconfig.cache
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\obj\Debug\net8.0\ref\BakeShop.dll
