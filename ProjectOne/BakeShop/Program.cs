@@ -8,8 +8,6 @@ Organization.
 
 ## Requirements
 
-- The application should be a C# Console Application
-- The application should build and run
 - The application should interact with users, and provide some console UI
 - The application should allow for multiple users to log in and persist their data
 - The application should demonstrate good input validation
@@ -74,12 +72,50 @@ class Program
     static void Main(string[] args)
     {
 
+        UserLogins user1 = new();
+        UserLogins.Login();
+
+
+        //If User = Customer
         Baking bake1 = new();
         Baking.BakingWelcome();
 
-        UserLogins user1 = new();
-        UserLogins.Login();
+        //If User = Owner
+        Baking bake2 = new();
+        Baking.OwnerWelcome();
+
+
+
+
+
+
     }
+
+
+
+    //Exception handling, EDIT EDIT EDIT, copy/paste from class demo
+    //     public static void HandlingExceptions()
+    // {
+    //     int[] numbers = [1, 2, 3];
+
+    //     System.Console.WriteLine("Enter an index: ");
+    //     string input = Console.ReadLine() ?? "0";
+    //     //Handling Exceptions: try-catch block
+    //     try
+    //     {
+    //         int index = int.Parse(input);
+    //         System.Console.WriteLine(numbers[index]);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         System.Console.WriteLine(ex.Message);
+    //         System.Console.WriteLine(ex.StackTrace);
+    //     }
+
+    //     System.Console.WriteLine("Program End");
+
+    // }
+
 
 
 }

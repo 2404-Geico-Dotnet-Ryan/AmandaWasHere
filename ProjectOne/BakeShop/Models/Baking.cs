@@ -41,17 +41,26 @@ class Baking
     public static void BakingWelcome()
     {
         Console.WriteLine("<><><><><><><><><><><><><><><><><>");
-        Console.WriteLine("****WELCOME TO THE  BAKESHOP!****");
+        Console.WriteLine("What would you like to do today?");
         Console.WriteLine("<><><><><><><><><><><><><><><><><>");
-
-        Console.WriteLine("Please select an option from below!");
-
+        Console.WriteLine();
         Console.WriteLine("[1] Order Items");
         Console.WriteLine("[2] See Last Order");
 
     }
 
+    public static void OwnerWelcome()
+    {
 
+        Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+        Console.WriteLine("Hey boss, what do you need to do today?");
+        Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+        Console.WriteLine();
+        Console.WriteLine("[1] Add Items");
+        Console.WriteLine("[2] Update Items");
+        Console.WriteLine("[3] Delete Items");
+
+    }
 
 
 }

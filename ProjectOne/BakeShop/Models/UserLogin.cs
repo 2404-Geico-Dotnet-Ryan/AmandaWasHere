@@ -1,11 +1,12 @@
 using System.Dynamic;
+using System.Xml;
 
 class UserLogins
 {
     public int Id { get; set; }
     public string UserName { get; set; }
     public string Password { get; set; }
-    public bool SaveOrder { get; set; }
+    public bool SaveOrder { get; set; } //Do I want this here .... ?
 
 
     public UserLogins()
@@ -29,11 +30,13 @@ class UserLogins
 
         Console.WriteLine("Please enter your password: ");
         string password = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Welcome back, " + userName + "!");
     }
 
 
 
-    //If user is Owner --> add, edit, delete bake goods
+    //If user is Owner --> add, edit, delete bake goods. Will that functionality live here?
 
-    //If user is customer --> Order items, review last order
+    //If user is customer --> Order items, review last order. Will that functionality live here?
 }
