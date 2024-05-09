@@ -49,7 +49,6 @@ As a customer:
     - see previous orders(?)
 
 
-
 ------------- Planning How To -------------
 Login: creation? then store, then accesses - happy path for now, use FileIO;
 
@@ -61,6 +60,10 @@ add/edit/delete: list/collection
 order bake items: do while loop for asking if they want to add more items, bool
 
 
+ADDITIONAL NOTES:
+-   quantity, can I subject customer quantity from total and have the listed item update
+to available or not *Similar to rock game*
+
 */
 
 
@@ -71,29 +74,79 @@ class Program
 {
     static void Main(string[] args)
     {
+        //LOGIN PROMPT
+        User user1 = new();
+        Login();
 
-        UserLogins user1 = new();
-        UserLogins.Login();
+        //CUSTOMER FLOW
+        Food bake1 = new();
+        BakingWelcome();
+        int cInput;
+        cInput = int.Parse(Console.ReadLine());
 
+        switch (cInput)
+        {
+            //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
+            //then returned bake to the list with updated quantity reflected
+            case 1:
+                Console.WriteLine("");
+                break;
 
-        //If User = Customer
-        Baking bake1 = new();
-        Baking.BakingWelcome();
+            //CUSTOMER VIEW CURRENT CART FLOW
+            case 2:
+                Console.WriteLine();
+                break;
 
-        //If User = Owner
-        Baking bake2 = new();
-        Baking.OwnerWelcome();
+            //CUSTOMER DELETE ITEM FROM CART FLOW *Restores quantity to list
+            case 3:
+                Console.WriteLine();
+                break;
 
+            //CUSTOMER REVIEW CART HISTORY FROM LAST TIME (Not all, just last order) FLOW
+            case 4:
+                Console.WriteLine();
+                break;
 
+            //CUSTOMER LOG OUT FLOW
+            case 5:
+                Console.WriteLine();
+                break;
+        }
 
+        //OWNER FLOW
+        Food bake2 = new();
+        OwnerWelcome();
+        int oInput;
+        oInput = int.Parse(Console.ReadLine());
 
+        switch (oInput)
+        {
+            //OWNER ADD ITEM TO BAKERY FLOW
+            case 1:
+                Console.WriteLine("");
+                break;
 
+            //OWNER UPDATE BAKERY ITEM FLOW
+            case 2:
+                Console.WriteLine("");
+                break;
+
+            //OWNER REMOVE BAKERY ITEM FLOW
+            case 3:
+                Console.WriteLine("");
+                break;
+
+            //OWNER LOG OUT FLOW
+            case 4:
+                Console.WriteLine("");
+                break;
+        }
 
     }
 
 
 
-    //Exception handling, EDIT EDIT EDIT, copy/paste from class demo
+    //Exception handling, EDIT EDIT EDIT, copy/paste from class demo; would like logging
     //     public static void HandlingExceptions()
     // {
     //     int[] numbers = [1, 2, 3];
@@ -115,6 +168,46 @@ class Program
     //     System.Console.WriteLine("Program End");
 
     // }
+
+    //Methods
+    public static void Login()
+    {
+        Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
+        Console.WriteLine("<><><>Welcome to the Bake Shop<><><>");
+        Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
+
+        Console.WriteLine("Please enter your user name: ");
+        string userName = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Please enter your password: ");
+        string password = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Welcome back, " + userName + "!");
+    }
+    public static void BakingWelcome()
+    {
+        Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+        Console.WriteLine("What would you like to do today?");
+        Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+        Console.WriteLine();
+        Console.WriteLine("[1] Order Items");
+        Console.WriteLine("[2] See Last Order");
+        Console.WriteLine("[3] Log Out");
+
+    }
+
+    public static void OwnerWelcome()
+    {
+        Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
+        Console.WriteLine("Hey boss, what do you need to do today?");
+        Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
+        Console.WriteLine();
+        Console.WriteLine("[1] Add Items");
+        Console.WriteLine("[2] Update Items");
+        Console.WriteLine("[3] Delete Items");
+        Console.WriteLine("[4] Log Out");
+
+    }
 
 
 

@@ -1,38 +1,32 @@
 using System.Dynamic;
 using System.Xml;
 
-class UserLogins
+class User
 {
     public int Id { get; set; }
+    public string Role { get; set; }
     public string UserName { get; set; }
     public string Password { get; set; }
     public bool SaveOrder { get; set; } //Do I want this here .... ?
 
 
-    public UserLogins()
+    public User()
     {
+        Role = "";
         UserName = "";
         Password = "";
     }
-    public UserLogins(int id, string userName, string password, bool saveOrder)
+    public User(int id, string role, string userName, string password, bool saveOrder)
     {
         Id = id;
+        Role = role;
         UserName = userName;
         Password = password;
         SaveOrder = saveOrder;
 
     }
 
-    public static void Login()
-    {
-        Console.WriteLine("Please enter your user name: ");
-        string userName = Console.ReadLine() ?? "";
 
-        Console.WriteLine("Please enter your password: ");
-        string password = Console.ReadLine() ?? "";
-
-        Console.WriteLine("Welcome back, " + userName + "!");
-    }
 
 
 
