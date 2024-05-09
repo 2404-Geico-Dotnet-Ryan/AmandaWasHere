@@ -24,6 +24,12 @@ class BGoodsRepo
         }
     }
 
+    //VIEW ALL
+    public List<Food> GetAllBakeryItems()
+    {
+        return [.. bakedGoods.bakeryItems.Values];
+    }
+
     public Food? UpdateItem(Food b)
     {
         try

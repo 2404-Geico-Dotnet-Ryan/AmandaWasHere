@@ -68,82 +68,32 @@ to available or not *Similar to rock game*
 
 
 using System;
+using System.Collections;
 using System.ComponentModel;
+using System.Reflection.Metadata;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
     static void Main(string[] args)
     {
-        //LOGIN PROMPT
-        User user1 = new();
-        Login();
+        // //LOGIN PROMPT
+        // User user1 = new();
+        // Login();
+
 
         //CUSTOMER FLOW
-        Food bake1 = new();
-        BakingWelcome();
-        int cInput;
-        cInput = int.Parse(Console.ReadLine());
+        CartRepo cart = new();
+        CustomerWelcome(cart);
+        Console.WriteLine("Thank you for shopping with Bake Shop!");
 
-        switch (cInput)
-        {
-            //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
-            //then returned bake to the list with updated quantity reflected
-            case 1:
-                Console.WriteLine("");
-                break;
 
-            //CUSTOMER VIEW CURRENT CART FLOW
-            case 2:
-                Console.WriteLine();
-                break;
-
-            //CUSTOMER DELETE ITEM FROM CART FLOW *Restores quantity to list
-            case 3:
-                Console.WriteLine();
-                break;
-
-            //CUSTOMER REVIEW CART HISTORY FROM LAST TIME (Not all, just last order) FLOW
-            case 4:
-                Console.WriteLine();
-                break;
-
-            //CUSTOMER LOG OUT FLOW
-            case 5:
-                Console.WriteLine();
-                break;
-        }
-
-        //OWNER FLOW
-        Food bake2 = new();
-        OwnerWelcome();
-        int oInput;
-        oInput = int.Parse(Console.ReadLine());
-
-        switch (oInput)
-        {
-            //OWNER ADD ITEM TO BAKERY FLOW
-            case 1:
-                Console.WriteLine("");
-                break;
-
-            //OWNER UPDATE BAKERY ITEM FLOW
-            case 2:
-                Console.WriteLine("");
-                break;
-
-            //OWNER REMOVE BAKERY ITEM FLOW
-            case 3:
-                Console.WriteLine("");
-                break;
-
-            //OWNER LOG OUT FLOW
-            case 4:
-                Console.WriteLine("");
-                break;
-        }
+        // //OWNER FLOW
+        // BGoodsRepo bg = new();
+        // OwnerWelcome(bg);
+        // Console.WriteLine("Have a nice day!");
 
     }
-
 
 
     //Exception handling, EDIT EDIT EDIT, copy/paste from class demo; would like logging
@@ -184,31 +134,121 @@ class Program
 
         Console.WriteLine("Welcome back, " + userName + "!");
     }
-    public static void BakingWelcome()
+    public static void CustomerWelcome(CartRepo cart)
     {
-        Console.WriteLine("<><><><><><><><><><><><><><><><><>");
-        Console.WriteLine("What would you like to do today?");
-        Console.WriteLine("<><><><><><><><><><><><><><><><><>");
-        Console.WriteLine();
-        Console.WriteLine("[1] Order Items");
-        Console.WriteLine("[2] See Last Order");
-        Console.WriteLine("[3] Log Out");
+        bool keepGoing = true;
+        while (keepGoing)
+        {
+            Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+            Console.WriteLine("What would you like to do today?");
+            Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+            Console.WriteLine();
+            Console.WriteLine("[1] Order Items");
+            Console.WriteLine("[2] See Last Order");
+            Console.WriteLine("[3] Log Out");
+
+            int cInput = int.Parse(Console.ReadLine() ?? "0");
+
+            keepGoing = CustomerNextSteps(cart, cInput);
+        }
 
     }
+    public static bool CustomerNextSteps(CartRepo cart, int cInput)
+    {
+        switch (cInput)
+        {
+            //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
+            //then returned bake to the list with updated quantity reflected
+            case 1:
+                //Add item to cart method
+                break;
 
-    public static void OwnerWelcome()
+            //CUSTOMER VIEW CURRENT CART FLOW
+            case 2:
+                //view cart method
+                break;
+
+            //CUSTOMER DELETE ITEM FROM CART FLOW *Restores quantity to list
+            case 3:
+                //delete from cart method
+                break;
+
+            //CUSTOMER REVIEW CART HISTORY FROM LAST TIME (Not all, just last order) FLOW
+            case 4:
+                //view past cart
+                break;
+
+            //CUSTOMER LOG OUT FLOW
+            case 5:
+                //Log Out method, same between customer and owner
+                break;
+
+                // case 0:
+                // default:
+                //     {
+                //         return false;
+                //     }
+        }
+        return true;
+    }
+    public static void OwnerWelcome(BGoodsRepo bg)
     {
         Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
-        Console.WriteLine("Hey boss, what do you need to do today?");
+        Console.WriteLine("Welcome back, ");
         Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
-        Console.WriteLine();
-        Console.WriteLine("[1] Add Items");
-        Console.WriteLine("[2] Update Items");
-        Console.WriteLine("[3] Delete Items");
-        Console.WriteLine("[4] Log Out");
+        bool keepGoing = true;
+        while (keepGoing)
+        {
+            Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
+            Console.WriteLine("Hey boss, what do you need to do today?");
+            Console.WriteLine();
+            Console.WriteLine("[1] Add Items");
+            Console.WriteLine("[2] Update Items");
+            Console.WriteLine("[3] Delete Items");
+            Console.WriteLine("[4] Log Out");
+            Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
+
+            int oInput = int.Parse(Console.ReadLine() ?? "0");
+
+            keepGoing = OwnerNextSteps(bg, oInput);
+        }
+    }
+    public static bool OwnerNextSteps(BGoodsRepo bg, int oInput)
+    {
+        switch (oInput)
+        {
+            //OWNER ADD ITEM TO BAKERY FLOW
+            case 1:
+                //Add Item Method
+                break;
+
+            //OWNER UPDATE BAKERY ITEM FLOW
+            case 2:
+                //Update Item Method
+                break;
+
+            //OWNER REMOVE BAKERY ITEM FLOW
+            case 3:
+                //Remove Item method
+                break;
+
+            //OWNER LOG OUT FLOW
+            case 4:
+                //Log Out method, same between customer and owner
+                break;
+
+                // case 0:
+                // default:
+                //     {
+                //         return false;
+                //     }
+        }
+        return true;
+    }
+    public static void LogOut()
+    {
 
     }
-
 
 
 }

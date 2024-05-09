@@ -27,13 +27,17 @@ class CartRepo
             return null;
         }
     }
-
+    //VIEW CART - having difficulty...need to come back to
+    // public List<Food> GetAllBakeryItems()
+    // {
+    //     return bakedGoods.bakeryItems.Values.ToList();
+    // }
     public Food? UpdateItem(Food b)
     {
         try
         {
             bakedGoods.shoppingCart[b.Id] = b;
-              return b;
+            return b;
         }
         catch (Exception)
         {
