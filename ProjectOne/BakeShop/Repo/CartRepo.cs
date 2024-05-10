@@ -27,11 +27,11 @@ class CartRepo
             return null;
         }
     }
-    //VIEW CART - having difficulty...need to come back to
-    // public List<Food> GetAllBakeryItems()
-    // {
-    //     return bakedGoods.bakeryItems.Values.ToList();
-    // }
+    //VIEW CART
+    public List<Food> ViewAllCartItems()
+    {
+        return bakedGoods.shoppingCart.Values.ToList();
+    }
     public Food? UpdateItem(Food b)
     {
         try

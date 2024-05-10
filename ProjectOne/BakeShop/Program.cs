@@ -65,8 +65,6 @@ ADDITIONAL NOTES:
 to available or not *Similar to rock game*
 
 */
-
-
 using System;
 using System.Collections;
 using System.ComponentModel;
