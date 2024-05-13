@@ -7,9 +7,9 @@ class CustomerCart
     // //Constructor to give us menu options to start:
     public CustomerCart()
     {
+        
         shoppingCart = []; //sets the dictionary to an empty collection, instead of at the top, 
         //moving it into the constructor
-
     }
 
 

@@ -28,7 +28,7 @@ class CartRepo
         }
     }
     //VIEW CART
-    public List<Food> ViewAllCartItems()
+    public List<Food> ViewAll()
     {
         return bakedGoods.shoppingCart.Values.ToList();
     }
@@ -56,7 +56,7 @@ class CartRepo
         }
         else
         {
-            Console.WriteLine("Sorry, we don't have that item.");
+            Console.WriteLine("This item is not in your cart.");
             return null;
         }
     }

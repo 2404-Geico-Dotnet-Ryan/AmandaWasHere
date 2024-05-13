@@ -1,4 +1,4 @@
-//Place to keep functionality (starting off with 1:1 since movie app only has one model):
+// //Place to keep functionality (starting off with 1:1 since movie app only has one model):
 class FoodService
 {
     /*
@@ -20,7 +20,7 @@ class FoodService
     public List<Food> ViewCart() //Customer
     {
         //get all baked goods:
-        List<Food> allCart = cart.ViewAllCartItems();
+        List<Food> allCart = cart.ViewAll();
 
         //then filter what you dont want:
         //Not Applicable

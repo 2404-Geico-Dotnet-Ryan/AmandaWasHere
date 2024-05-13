@@ -1,16 +1,84 @@
-Build up my NEXTSTEPS methods
-Owner: Update 'Update' method to include submenu asking owner what field they want to Update
-Give option to both roles to View All
-Add Retrieve method to make View All work
 Customer: Set up Cart Repo; if nothing in cart display "No items in cart."
-Customer: SubMenu for deleting cart items
-Keep Retrieving one item for viewing purposes with Updating
-Another option for customer or replace View Last Order, pre-order/request/party order
-    - check status
-Repo's temporary - just to make sure it works; most likely will be rewritten
+
 Business Logic of ordering an item: cart to see what all they want to order, make sure its 
     available, make changes to inventory and subtract what is being ordered, finalize
 FoodServices.cs --> 
     How do I delete from my shopping cart under ViewCart method?
     do I need to do the math somewhere else making Quantity a bool?
 Right now, just start with happy path purchasing quantity and reducing inventory
+Build in Exit/"Back Button"
+Add User Login prompt to Program.cs (How do I use this to then jump into a flow?)
+Need to figure out view all for food menu to customer
+
+
+
+
+
+
+/*
+Due: 5/24/24 Friday
+
+create a console application, where the application will be interacting with users via terminal. 
+The project will conclude with a 5 minute presentation of working software to trainers and 
+colleagues. Your code will be hosted on your personal repository on our class's Github 
+Organization.
+
+## Requirements
+
+- The application should interact with users, and provide some console UI
+- The application should allow for multiple users to log in and persist their data
+- The application should demonstrate good input validation
+- The application should persist data to a SQL Server DB
+- The application should communicate to DB via ADO.NET or Entity Framework Core
+- The application should have unit tests
+
+## Nice to Have
+
+- n-tier architecture
+- dependency injection
+- The application should log errors and system events to a file or a DB table
+- Basic user authentication and authorization (admins vs normal users with passwords
+
+
+Feedback:
+remove the entirety of recipes. There is already a lot of work that goes into the short 
+statement of "order bake items" that it will take quite the effort right there. bc its 
+multiple things. 1) view baked goods 2) choose to buy one/multiple items. and 3) if 
+multiple items, track that, until ready to checkout. 4) possibly add the ability to view 
+past orders or purchases would keep it more self-inclusive while adding functionality.
+
+
+------------- Proposal -------------
+Idea: BakeShop, where you can order bakery goods and search for recipes
+
+Users: Owner, Customer
+
+As an Owner:
+- can log in
+- able to mark items not available (ingredient and search what recipes that impacts to 
+then mark as not available)
+
+
+As a customer:
+- login
+- order bake items
+    - view, choose 1 or multiple, if multi, track until ready to checkout
+
+
+
+------------- Planning How To -------------
+Login: creation? then store, then accesses - happy path for now, use FileIO;
+
+marking not available: List of ingredients? That each recipe will reference to allow recipe 
+updates based on availability of ingredients. PRimary key - ingredients
+
+add/edit/delete: list/collection
+
+order bake items: do while loop for asking if they want to add more items, bool
+
+
+ADDITIONAL NOTES:
+-   quantity, can I subject customer quantity from total and have the listed item update
+to available or not *Similar to rock game*
+
+*/

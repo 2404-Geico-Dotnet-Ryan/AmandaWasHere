@@ -1,100 +1,196 @@
-﻿/*
-Due: 5/24/24 Friday
-
-create a console application, where the application will be interacting with users via terminal. 
-The project will conclude with a 5 minute presentation of working software to trainers and 
-colleagues. Your code will be hosted on your personal repository on our class's Github 
-Organization.
-
-## Requirements
-
-- The application should interact with users, and provide some console UI
-- The application should allow for multiple users to log in and persist their data
-- The application should demonstrate good input validation
-- The application should persist data to a SQL Server DB
-- The application should communicate to DB via ADO.NET or Entity Framework Core
-- The application should have unit tests
-
-## Nice to Have
-
-- n-tier architecture
-- dependency injection
-- The application should log errors and system events to a file or a DB table
-- Basic user authentication and authorization (admins vs normal users with passwords
-
-
-Feedback:
-remove the entirety of recipes. There is already a lot of work that goes into the short 
-statement of "order bake items" that it will take quite the effort right there. bc its 
-multiple things. 1) view baked goods 2) choose to buy one/multiple items. and 3) if 
-multiple items, track that, until ready to checkout. 4) possibly add the ability to view 
-past orders or purchases would keep it more self-inclusive while adding functionality.
-
-
-------------- Proposal -------------
-Idea: BakeShop, where you can order bakery goods and search for recipes
-
-Users: Owner, Customer
-
-As an Owner:
-- can log in
-- able to mark items not available (ingredient and search what recipes that impacts to 
-then mark as not available)
-
-
-As a customer:
-- login
-- order bake items
-    - view, choose 1 or multiple, if multi, track until ready to checkout
-    - see previous orders(?)
-
-
-------------- Planning How To -------------
-Login: creation? then store, then accesses - happy path for now, use FileIO;
-
-marking not available: List of ingredients? That each recipe will reference to allow recipe 
-updates based on availability of ingredients. PRimary key - ingredients
-
-add/edit/delete: list/collection
-
-order bake items: do while loop for asking if they want to add more items, bool
-
-
-ADDITIONAL NOTES:
--   quantity, can I subject customer quantity from total and have the listed item update
-to available or not *Similar to rock game*
-
-*/
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Reflection.Metadata;
-using System.Security.Cryptography.X509Certificates;
-
+﻿using System;
 class Program
 {
+    // static FoodService fs = new();
+    // static UserService us = new();
+    // static User? currentUser = null;
+
     static void Main(string[] args)
     {
         // //LOGIN PROMPT
-        // User user1 = new();
-        // Login();
+        UserRepo user = new();
+        GeneralWelcome(user);
+        Register(user);
+        Login(user);
 
-
-        //CUSTOMER FLOW
+        //User Experience Begins:
         CartRepo cart = new();
-        CustomerWelcome(cart);
+        MainMenu(cart);
         Console.WriteLine("Thank you for shopping with Bake Shop!");
-
-
-        // //OWNER FLOW
-        // BGoodsRepo bg = new();
-        // OwnerWelcome(bg);
-        // Console.WriteLine("Have a nice day!");
-
     }
 
+    //Methods
+    public static void GeneralWelcome(UserRepo user)
+    {
+        bool keepGoing = true;
+        while (keepGoing)
+        {
+            Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
+            Console.WriteLine("<><><>Welcome to the Bake Shop<><><>");
+            Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
+            Console.WriteLine();
+            Console.WriteLine("What would you like to do today?");
+            Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+            Console.WriteLine();
+            Console.WriteLine("[1] Login");
+            Console.WriteLine("[2] Register");
 
-    //Exception handling, EDIT EDIT EDIT, copy/paste from class demo; would like logging
+            int gInput = int.Parse(Console.ReadLine() ?? "0");
+            keepGoing = GeneralNextSteps(user, gInput);
+        }
+    }
+    public static bool GeneralNextSteps(UserRepo user, int gInput)
+    {
+        switch (gInput)
+        {
+            case 1:
+                {
+                    Register(user);
+                    break;
+                }
+            case 2:
+                {
+                    Login(user);
+                    break;
+                }
+        }
+        return true;
+    }
+    public static void Register(UserRepo user)
+    {
+        Console.WriteLine("Please enter a user name: ");
+        string userName = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Please enter a password: ");
+        string password = Console.ReadLine() ?? "";
+    }
+    public static void Login(UserRepo user)
+    {
+        Console.WriteLine("Please enter your user name: ");
+        string userName = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Please enter your password: ");
+        string password = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Welcome back, " + userName + "!");
+    }
+    public static void MainMenu(CartRepo cart)
+    {
+        bool keepGoing = true;
+        while (keepGoing)
+        {
+            Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+            Console.WriteLine("What would you like to do today?");
+            Console.WriteLine("<><><><><><><><><><><><><><><><><>");
+            Console.WriteLine();
+            Console.WriteLine("[1] View Menu");
+            Console.WriteLine("[1] Add To Cart");
+            Console.WriteLine("[2] View Cart");
+            Console.WriteLine("[3] Update Cart");
+            Console.WriteLine("[4] Delete Item from Cart");
+            Console.WriteLine("[5] Log Out");
+
+            int cInput = int.Parse(Console.ReadLine() ?? "0");
+
+            keepGoing = NextSteps(cart, cInput);
+        }
+
+    }
+    public static bool NextSteps(CartRepo cart, int cInput)
+    {
+        switch (cInput)
+        {
+            //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
+            //then returned back to the list with updated quantity reflected
+            case 1:
+                {
+                    ViewMenu(cart);
+                    break;
+                }
+             //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
+            //then returned back to the list with updated quantity reflected
+            case 2:
+                {
+                    AddItem(cart);
+                    break;
+                }
+            //CUSTOMER VIEW CURRENT CART FLOW
+            case 3:
+                {
+                    ViewItem(cart);
+                    break;
+                }
+            //CUSTOMER DELETE ITEM FROM CART FLOW *Restores quantity to list
+            case 4:
+                {
+                    UpdateItem(cart);
+                    break;
+                }
+            // //CUSTOMER REVIEW CART HISTORY FROM LAST TIME (Not all, just last order) FLOW
+            case 5:
+                {
+                    DeleteItem(cart);
+                    break;
+                }
+        }
+        return true;
+    }
+
+    public static void AddItem(CartRepo cart)
+    {
+        Console.WriteLine("Let's add to your cart!");
+        Console.WriteLine("What is the item name?");
+        string itemName = Console.ReadLine() ?? "";
+        Console.WriteLine("How many would you like?");
+        int quantity = int.Parse(Console.ReadLine() ?? "0");
+
+        Food bakeryItem = new(0, itemName, 0, true, quantity, null);
+
+        bakeryItem = cart.AddItem(bakeryItem);
+
+        Console.WriteLine("Added to cart: " + bakeryItem);
+    }
+
+    public static void ViewItem(CartRepo cart)
+    {
+        List<Food> bakeryItems = cart.ViewAll();
+        Console.WriteLine("Currently in your cart:");
+        foreach (Food b in bakeryItems)
+        {
+            Console.WriteLine(b);
+        }
+
+    }
+    public static void UpdateItem(CartRepo cart)
+    {
+        Food bakeryItem = PromptCustomer(cart);
+        Console.WriteLine("Please update quantity: ");
+        bakeryItem.Quantity = int.Parse(Console.ReadLine() ?? "0");
+    }
+
+    public static void DeleteItem(CartRepo cart)
+    {
+        Food bakeryItem = PromptCustomer(cart);
+        Console.WriteLine("Deleted bakery item: " + cart.DeleteItem(bakeryItem));
+    }
+
+    // //Helper:
+    public static Food PromptCustomer(CartRepo cart)
+    {
+        Food? retrievedFood = null;
+        while (retrievedFood == null)
+        {
+            Console.WriteLine("Enter bakery item ID: ");
+            int input = int.Parse(Console.ReadLine() ?? "0");
+            retrievedFood = cart.ViewItem(input);
+        }
+        return retrievedFood;
+    }
+    // public static void LogOut()
+    // {
+
+    // }
+    //     Exception handling, EDIT EDIT EDIT, copy/paste from class demo; would like logging
     //     public static void HandlingExceptions()
     // {
     //     int[] numbers = [1, 2, 3];
@@ -116,137 +212,6 @@ class Program
     //     System.Console.WriteLine("Program End");
 
     // }
-
-    //Methods
-    public static void Login()
-    {
-        Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
-        Console.WriteLine("<><><>Welcome to the Bake Shop<><><>");
-        Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
-
-        Console.WriteLine("Please enter your user name: ");
-        string userName = Console.ReadLine() ?? "";
-
-        Console.WriteLine("Please enter your password: ");
-        string password = Console.ReadLine() ?? "";
-
-        Console.WriteLine("Welcome back, " + userName + "!");
-    }
-    public static void CustomerWelcome(CartRepo cart)
-    {
-        bool keepGoing = true;
-        while (keepGoing)
-        {
-            Console.WriteLine("<><><><><><><><><><><><><><><><><>");
-            Console.WriteLine("What would you like to do today?");
-            Console.WriteLine("<><><><><><><><><><><><><><><><><>");
-            Console.WriteLine();
-            Console.WriteLine("[1] Order Items");
-            Console.WriteLine("[2] See Last Order");
-            Console.WriteLine("[3] Log Out");
-
-            int cInput = int.Parse(Console.ReadLine() ?? "0");
-
-            keepGoing = CustomerNextSteps(cart, cInput);
-        }
-
-    }
-    public static bool CustomerNextSteps(CartRepo cart, int cInput)
-    {
-        switch (cInput)
-        {
-            //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
-            //then returned bake to the list with updated quantity reflected
-            case 1:
-                //Add item to cart method
-                break;
-
-            //CUSTOMER VIEW CURRENT CART FLOW
-            case 2:
-                //view cart method
-                break;
-
-            //CUSTOMER DELETE ITEM FROM CART FLOW *Restores quantity to list
-            case 3:
-                //delete from cart method
-                break;
-
-            //CUSTOMER REVIEW CART HISTORY FROM LAST TIME (Not all, just last order) FLOW
-            case 4:
-                //view past cart
-                break;
-
-            //CUSTOMER LOG OUT FLOW
-            case 5:
-                //Log Out method, same between customer and owner
-                break;
-
-                // case 0:
-                // default:
-                //     {
-                //         return false;
-                //     }
-        }
-        return true;
-    }
-    public static void OwnerWelcome(BGoodsRepo bg)
-    {
-        Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
-        Console.WriteLine("Welcome back, ");
-        Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
-        bool keepGoing = true;
-        while (keepGoing)
-        {
-            Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
-            Console.WriteLine("Hey boss, what do you need to do today?");
-            Console.WriteLine();
-            Console.WriteLine("[1] Add Items");
-            Console.WriteLine("[2] Update Items");
-            Console.WriteLine("[3] Delete Items");
-            Console.WriteLine("[4] Log Out");
-            Console.WriteLine("<><><><><><><><><><><><><><><><><><><><>");
-
-            int oInput = int.Parse(Console.ReadLine() ?? "0");
-
-            keepGoing = OwnerNextSteps(bg, oInput);
-        }
-    }
-    public static bool OwnerNextSteps(BGoodsRepo bg, int oInput)
-    {
-        switch (oInput)
-        {
-            //OWNER ADD ITEM TO BAKERY FLOW
-            case 1:
-                //Add Item Method
-                break;
-
-            //OWNER UPDATE BAKERY ITEM FLOW
-            case 2:
-                //Update Item Method
-                break;
-
-            //OWNER REMOVE BAKERY ITEM FLOW
-            case 3:
-                //Remove Item method
-                break;
-
-            //OWNER LOG OUT FLOW
-            case 4:
-                //Log Out method, same between customer and owner
-                break;
-
-                // case 0:
-                // default:
-                //     {
-                //         return false;
-                //     }
-        }
-        return true;
-    }
-    public static void LogOut()
-    {
-
-    }
 
 
 }
