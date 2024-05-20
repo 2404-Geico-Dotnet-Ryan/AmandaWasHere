@@ -8,7 +8,6 @@ class Food
     public string ItemName { get; set; }
     public double Price { get; set; }
     public bool InStock { get; set; }
-    public int Quantity { get; set; }
     //User model added:
     //Who checks out the food:
     public User? Customer { get; set; }
@@ -23,13 +22,12 @@ class Food
         //Don't need this line if we add the ? to the property and below in ToString
     }
 
-    public Food(int id, string itemName, double price, bool inStock, int quantity, User? customer)
+    public Food(int id, string itemName, double price, bool inStock, User? customer)
     {
         Id = id;
         ItemName = itemName;
         Price = price;
         InStock = inStock;
-        Quantity = quantity;
         Customer = customer;
 
     }
@@ -42,7 +40,6 @@ class Food
         + ", Item Name: " + ItemName
         + ", Price: " + Price
         + ", In Stock: " + InStock
-        + ", Quantity: " + Quantity
         + ", Customer: " + Customer?.ToString(); //This will include User object and become
         //a whole other object. Or, you can do Customer.Id if you want to simplify
     //Null cannot call the ToString object

@@ -10,9 +10,10 @@ Build in Exit/"Back Button"
 Add User Login prompt to Program.cs (How do I use this to then jump into a flow?)
 Need to figure out view all for food menu to customer
 
-
-
-
+5/20:
+**Scrap being able to purchase more than one (CartRepo)
+**Bulk buy instead of individual - go from int quantity to bool available
+**Work on exception handling (just one)
 
 
 /*

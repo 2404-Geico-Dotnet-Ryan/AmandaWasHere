@@ -1,7 +1,7 @@
 using System.Dynamic;
 using System.Xml;
 
-class User
+class User //SQL table is called Logins due to User being a reserved word
 {
     public int Id { get; set; }
     public string Role { get; set; } //Owner bool?; Ryan suggests string; Owner and Customer

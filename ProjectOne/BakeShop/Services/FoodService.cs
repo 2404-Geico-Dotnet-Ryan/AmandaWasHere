@@ -7,8 +7,9 @@ class FoodService
     - view items in cart = 'ViewCart'
     - view items in inventory
     - view availability of bakery items: count of what is left
-    - edit inventory
-    - add to inventory
+    - edit cart
+    - add to cart
+    - delete cart
 
     *Trivial Services:
     -   the service is already existing in our data layer so we will just CALL the repo method
@@ -16,41 +17,66 @@ class FoodService
     **Don't think about UI, this is just the PROCCESS**
     */
 
-    CartRepo cart = new(); //connects us to the data layer
-    public List<Food> ViewCart() //Customer
+
+    FoodRepo fr;
+    public FoodService(FoodRepo fr)
     {
-        //get all baked goods:
-        List<Food> allCart = cart.ViewAll();
-
-        //then filter what you dont want:
-        //Not Applicable
-        //List<Move> availableMovies = new();
-        //foreach(Movie m in allMovies)
-        //{if (m.Available)
-        //{ availableMovies.Add(m); }}
-
-
-        //return UPDATED/NEW list:
-        return allCart;
+        this.fr = fr;
     }
 
-//Not sure if applicable:
-//"Check out" movie = change the quantity of what is available?
-public Food Purchase(Food p) //p is the bake item we want to reduce quantity of and mark in/out stock
-{
-        //Check we have quantity, does this aide in updating the quantity to reflect what bought
-        if (p.InStock)
-        {
-            //take the quantity of p and update inventory quantity to reflect
-        }
-        else
-        {
-            p.InStock = false;
-        }
-        cart.UpdateItem(p);
+    //Add to Cart
+    public Food AddToCart(Food p)
+    {
+
 
         return p;
-}
+    }
+    public List<Food> ViewMenu() //Customer
+    {
+        //get all baked goods:
+        List<Food> inventory = fr.ViewAll();
+
+        //empty list for available:
+        List<Food> availableItems = new();
+        foreach (Food f in inventory)
+        {
+            if (f.InStock)
+            { availableItems.Add(f); }
+        }
+        //return UPDATED/NEW list:
+        return inventory;
+    }
 
 
+    public Food? BuyItem(Food p) //p is the bake item we want to mark in/out stock
+    {
+        //Check we have
+        if (!p.InStock)
+        {
+            Console.WriteLine("So sorry, we do not have that available.");
+            return null;
+        }
+        p.InStock = false;
+        fr.UpdateItem(p);
+        return p;
+    }
+
+    public List<Food> ViewLast(User u)
+    {
+        List<Food> allFood = fr.ViewAll();
+        List<Food> userPurchase = new();
+        foreach (Food f in allFood)
+        {
+            if (f.Customer == u)
+            {
+                userPurchase.Add(f);
+            }
+        }
+        return userPurchase;
+    }
+
+    public Food? ViewItem(int id)
+    {
+        return fr.ViewItem(id);
+    }
 }

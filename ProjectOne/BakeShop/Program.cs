@@ -1,81 +1,110 @@
 ﻿using System;
 class Program
 {
-    // static FoodService fs = new();
-    // static UserService us = new();
-    // static User? currentUser = null;
+    static FoodService fs;
+    static UserService us;
+    static User? currentUser = null;
 
     static void Main(string[] args)
     {
-        // //LOGIN PROMPT
-        UserRepo user = new();
-        GeneralWelcome(user);
-        Register(user);
-        Login(user);
 
-        //User Experience Begins:
-        CartRepo cart = new();
-        MainMenu(cart);
-        Console.WriteLine("Thank you for shopping with Bake Shop!");
+        Welcome();
+        //LOGIN PROMPT
+        // UserRepo user = new();
+
+        // Register();
+        // Login();
+
+        // //User Experience Begins:
+        MainMenu();
+        // Console.WriteLine("Thank you for shopping with Bake Shop!");
     }
 
     //Methods
-    public static void GeneralWelcome(UserRepo user)
+    public static void Welcome()
     {
+        Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
+        Console.WriteLine("<><><>Welcome to the Bake Shop<><><>");
+        Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
+        Console.WriteLine();
+
         bool keepGoing = true;
         while (keepGoing)
         {
-            Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
-            Console.WriteLine("<><><>Welcome to the Bake Shop<><><>");
-            Console.WriteLine("<><><><><><><><><><><><><><><><><><>");
-            Console.WriteLine();
             Console.WriteLine("What would you like to do today?");
             Console.WriteLine("<><><><><><><><><><><><><><><><><>");
             Console.WriteLine();
             Console.WriteLine("[1] Login");
             Console.WriteLine("[2] Register");
+            Console.WriteLine("[0] Exit Application");
 
             int gInput = int.Parse(Console.ReadLine() ?? "0");
-            keepGoing = GeneralNextSteps(user, gInput);
+            gInput = ValidateCmd(gInput, 2);
+            keepGoing = GeneralNextSteps(gInput);
         }
     }
-    public static bool GeneralNextSteps(UserRepo user, int gInput)
+    public static bool GeneralNextSteps(int gInput)
     {
         switch (gInput)
         {
             case 1:
                 {
-                    Register(user);
+                    Login();
                     break;
                 }
             case 2:
                 {
-                    Login(user);
+                    Register();
                     break;
                 }
+            case 0:
+            default:
+                return false;
         }
         return true;
     }
-    public static void Register(UserRepo user)
+    public static void Register()
     {
         Console.WriteLine("Please enter a user name: ");
         string userName = Console.ReadLine() ?? "";
 
         Console.WriteLine("Please enter a password: ");
         string password = Console.ReadLine() ?? "";
-    }
-    public static void Login(UserRepo user)
-    {
-        Console.WriteLine("Please enter your user name: ");
-        string userName = Console.ReadLine() ?? "";
 
-        Console.WriteLine("Please enter your password: ");
-        string password = Console.ReadLine() ?? "";
-
-        Console.WriteLine("Welcome back, " + userName + "!");
+        User? newUser = new(0, userName, password, "user");
+        newUser = us.Register(newUser);
+        if (newUser != null)
+        {
+            Console.WriteLine("Your user name, " + userName + " has been created. Welcome!");
+        }
+        else
+        {
+            Console.WriteLine("Registration was not successful, try again.");
+        }
+        MainMenu();
     }
-    public static void MainMenu(CartRepo cart)
+    public static void Login()
     {
+
+        while (currentUser == null)
+        {
+            Console.WriteLine("Please enter your user name: ");
+            string userName = Console.ReadLine() ?? "";
+
+            Console.WriteLine("Please enter your password: ");
+            string password = Console.ReadLine() ?? "";
+
+            currentUser = us.Login(userName, password);
+            Console.WriteLine("Welcome back, " + userName + "!");
+
+            if (currentUser == null)
+                Console.WriteLine("Login was not successful, try again.");
+        }
+        MainMenu();
+    }
+    public static void MainMenu()
+    {
+        Console.WriteLine("Welcome, " + currentUser?.UserName);
         bool keepGoing = true;
         while (keepGoing)
         {
@@ -84,108 +113,114 @@ class Program
             Console.WriteLine("<><><><><><><><><><><><><><><><><>");
             Console.WriteLine();
             Console.WriteLine("[1] View Menu");
-            Console.WriteLine("[1] Add To Cart");
-            Console.WriteLine("[2] View Cart");
-            Console.WriteLine("[3] Update Cart");
-            Console.WriteLine("[4] Delete Item from Cart");
-            Console.WriteLine("[5] Log Out");
+            Console.WriteLine("[2] Buy Bakery Item");
+            Console.WriteLine("[3] View Last Purchased");
+            Console.WriteLine("[4] Log Out");
+            Console.WriteLine("[0] Exit Menu");
 
             int cInput = int.Parse(Console.ReadLine() ?? "0");
-
-            keepGoing = NextSteps(cart, cInput);
+            cInput = ValidateCmd(cInput, 4);
+            keepGoing = NextSteps(cInput);
         }
+        currentUser = null;
 
     }
-    public static bool NextSteps(CartRepo cart, int cInput)
+    public static bool NextSteps(int cInput)
     {
         switch (cInput)
         {
-            //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
-            //then returned back to the list with updated quantity reflected
             case 1:
                 {
-                    ViewMenu(cart);
+                    ViewMenu();
                     break;
                 }
-             //CUSTOMER ADD ITEM TO CART FLOW *Display list of available items, select
-            //then returned back to the list with updated quantity reflected
             case 2:
                 {
-                    AddItem(cart);
+                    Buy();
                     break;
                 }
-            //CUSTOMER VIEW CURRENT CART FLOW
             case 3:
                 {
-                    ViewItem(cart);
+                    LastPurchased(currentUser);
                     break;
                 }
-            //CUSTOMER DELETE ITEM FROM CART FLOW *Restores quantity to list
             case 4:
                 {
-                    UpdateItem(cart);
+                    currentUser = null;
+                    Welcome();
                     break;
                 }
-            // //CUSTOMER REVIEW CART HISTORY FROM LAST TIME (Not all, just last order) FLOW
-            case 5:
+            case 0:
+            default:
                 {
-                    DeleteItem(cart);
-                    break;
+                    return false;
                 }
         }
         return true;
     }
 
-    public static void AddItem(CartRepo cart)
+    public static void ViewMenu()
     {
-        Console.WriteLine("Let's add to your cart!");
-        Console.WriteLine("What is the item name?");
-        string itemName = Console.ReadLine() ?? "";
-        Console.WriteLine("How many would you like?");
-        int quantity = int.Parse(Console.ReadLine() ?? "0");
-
-        Food bakeryItem = new(0, itemName, 0, true, quantity, null);
-
-        bakeryItem = cart.AddItem(bakeryItem);
-
-        Console.WriteLine("Added to cart: " + bakeryItem);
-    }
-
-    public static void ViewItem(CartRepo cart)
-    {
-        List<Food> bakeryItems = cart.ViewAll();
-        Console.WriteLine("Currently in your cart:");
+        List<Food> bakeryItems = fs.ViewMenu();
+        Console.WriteLine("Available Baked Goods:");
         foreach (Food b in bakeryItems)
         {
             Console.WriteLine(b);
         }
 
     }
-    public static void UpdateItem(CartRepo cart)
+    public static void Buy()
     {
-        Food bakeryItem = PromptCustomer(cart);
-        Console.WriteLine("Please update quantity: ");
-        bakeryItem.Quantity = int.Parse(Console.ReadLine() ?? "0");
+        while (true)
+        {   //Pick an item:
+            Food? bakeryItem = PromptUser();
+            if (bakeryItem == null) return;
+            bakeryItem = fs.BuyItem(bakeryItem);
+            if (bakeryItem != null)
+            {
+                Console.WriteLine("Added to your cart: " + bakeryItem);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Sorry, that item is not available.");
+            }
+        }
     }
 
-    public static void DeleteItem(CartRepo cart)
+    public static void LastPurchased(User currentUser)
     {
-        Food bakeryItem = PromptCustomer(cart);
-        Console.WriteLine("Deleted bakery item: " + cart.DeleteItem(bakeryItem));
+        List<Food> purchase = fs.ViewLast(currentUser);
+        for (int i = 1; i > purchase.Count; i++)
+        {
+            Console.WriteLine(purchase[i]);
+        }
     }
 
     // //Helper:
-    public static Food PromptCustomer(CartRepo cart)
+    public static Food PromptUser()
     {
         Food? retrievedFood = null;
         while (retrievedFood == null)
         {
             Console.WriteLine("Enter bakery item ID: ");
             int input = int.Parse(Console.ReadLine() ?? "0");
-            retrievedFood = cart.ViewItem(input);
+            retrievedFood = fs.ViewItem(input);
         }
         return retrievedFood;
     }
+    public static int ValidateCmd(int cmd, int maxOption)
+    {
+        while (cmd < 0 || cmd > maxOption)
+        {
+            System.Console.WriteLine("Invalid Command - Please Enter a command 1-" + maxOption + "; or 0 to Quit");
+            cmd = int.Parse(Console.ReadLine() ?? "0");
+        }
+
+        //if input was already valid - it skips the if statement and just returns the value.
+        return cmd;
+    }
+
     // public static void LogOut()
     // {
 

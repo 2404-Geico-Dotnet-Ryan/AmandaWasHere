@@ -1,0 +1,44 @@
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.exe
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.deps.json
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.runtimeconfig.json
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.dll
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.pdb
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.AssemblyInfoInputs.cache
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.AssemblyInfo.cs
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.csproj.CoreCompileInputs.cache
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.sourcelink.json
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.dll
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\refint\PracticeChallenges.dll
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.pdb
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.genruntimeconfig.cache
+C:\Users\RyanSchlientz\Documents\TrainingBatches\2404-geico-dotnet\Practice\PracticeChallenges\obj\Debug\net8.0\ref\PracticeChallenges.dll
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.exe
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.deps.json
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.runtimeconfig.json
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.dll
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.pdb
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.AssemblyInfoInputs.cache
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.AssemblyInfo.cs
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.csproj.CoreCompileInputs.cache
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.dll
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\refint\PracticeChallenges.dll
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.pdb
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.genruntimeconfig.cache
+C:\Users\U1H071\Desktop\Practice\PracticeChallenges\obj\Debug\net8.0\ref\PracticeChallenges.dll
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.exe
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.deps.json
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.runtimeconfig.json
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.dll
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\bin\Debug\net8.0\PracticeChallenges.pdb
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.AssemblyInfoInputs.cache
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.AssemblyInfo.cs
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.csproj.CoreCompileInputs.cache
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.sourcelink.json
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.dll
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\refint\PracticeChallenges.dll
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.pdb
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\PracticeChallenges.genruntimeconfig.cache
+C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\Practice\PracticeChallenges\obj\Debug\net8.0\ref\PracticeChallenges.dll
