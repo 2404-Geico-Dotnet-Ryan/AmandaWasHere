@@ -8,13 +8,17 @@ class UserService
     - user logout (?)
 
     */
-    UserRepo ur = new();
+    UserRepo ur;
+    public UserService(UserRepo ur)
+    {
+        this.ur = ur;
+    }
 
     //Register - taking in info and perform a login "registering"
     public User? Register(User u)
     {
         //Not allowing Owner to register (they should be added internally):
-        if (u.Role != "Customer")
+        if (u.Role != "user")
         {
             Console.WriteLine("Invalid role. Please contact System Coordinator to create your login.");
             return null;

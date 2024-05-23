@@ -4,11 +4,10 @@ using System.Xml;
 class User //SQL table is called Logins due to User being a reserved word
 {
     public int Id { get; set; }
-    public string Role { get; set; } //Owner bool?; Ryan suggests string; Owner and Customer
     public string UserName { get; set; }
     public string Password { get; set; }
-    //public bool SaveOrder { get; set; } //Do I want this here .... ? This will be to allow
-    //the customer to see last order
+    public string Role { get; set; }
+
 
     public User()
     {
@@ -16,21 +15,21 @@ class User //SQL table is called Logins due to User being a reserved word
         UserName = "";
         Password = "";
     }
-    public User(int id, string role, string userName, string password)
+    public User(int id, string userName, string password, string role)
     {
         Id = id;
-        Role = role;
         UserName = userName;
         Password = password;
+        Role = role;
     }
 
 
     public override string ToString() //allows for single quotations
     {
         return "ID: " + Id
-        + ", Role: " + Role
         + ", User Name: " + UserName
-        + ", Password: " + Password;
+        + ", Password: " + Password
+        + ", Role: " + Role;
 
     }
 

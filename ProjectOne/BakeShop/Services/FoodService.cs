@@ -19,6 +19,7 @@ class FoodService
 
 
     FoodRepo fr;
+    //FoodService fs = new();
     public FoodService(FoodRepo fr)
     {
         this.fr = fr;
@@ -67,7 +68,7 @@ class FoodService
         List<Food> userPurchase = new();
         foreach (Food f in allFood)
         {
-            if (f.Customer == u)
+            if (f.User == u)
             {
                 userPurchase.Add(f);
             }

@@ -1,11 +1,10 @@
---DROP TABLE Food;
+DROP TABLE Food;
 ----Create - DDL Command - part of defining rules
 CREATE TABLE Food (
 	Id INT IDENTITY PRIMARY KEY, 
-	Title VARCHAR(50) UNIQUE NOT NULL,
+	ItemName VARCHAR(50) UNIQUE NOT NULL,
 	Price DECIMAL(12,2), 
 	InStock BIT DEFAULT 1,
-	Quantity BIGINT DEFAULT 50,
 	UserId INT,
 	CONSTRAINT FK_Movie_User FOREIGN KEY (UserId) REFERENCES [User](Id)
 	);

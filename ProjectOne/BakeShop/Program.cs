@@ -7,17 +7,21 @@ class Program
 
     static void Main(string[] args)
     {
+        string path = @"C:\Users\U1H071\Revature Training\TestProject2024\AmandaWasHere\ProjectOne\BakeShop\bakeshop-db.txt";
+        string connectionString = File.ReadAllText(path);
+
+        UserRepo ur = new(connectionString);
+        us = new(ur);
+
+        FoodRepo fr = new(connectionString);
+        fs = new(fr);
 
         Welcome();
-        //LOGIN PROMPT
-        // UserRepo user = new();
-
-        // Register();
-        // Login();
-
-        // //User Experience Begins:
-        MainMenu();
-        // Console.WriteLine("Thank you for shopping with Bake Shop!");
+        // fr = new FoodRepo();
+        // fs = new FoodService(fr);
+        // ur = new UserRepo();
+        // us = new UserService(ur);
+        //MainMenu();
     }
 
     //Methods
@@ -95,7 +99,6 @@ class Program
             string password = Console.ReadLine() ?? "";
 
             currentUser = us.Login(userName, password);
-            Console.WriteLine("Welcome back, " + userName + "!");
 
             if (currentUser == null)
                 Console.WriteLine("Login was not successful, try again.");
@@ -115,11 +118,11 @@ class Program
             Console.WriteLine("[1] View Menu");
             Console.WriteLine("[2] Buy Bakery Item");
             Console.WriteLine("[3] View Last Purchased");
-            Console.WriteLine("[4] Log Out");
-            Console.WriteLine("[0] Exit Menu");
+            Console.WriteLine("[0] Log Out");
+
 
             int cInput = int.Parse(Console.ReadLine() ?? "0");
-            cInput = ValidateCmd(cInput, 4);
+            cInput = ValidateCmd(cInput, 3);
             keepGoing = NextSteps(cInput);
         }
         currentUser = null;
@@ -142,12 +145,6 @@ class Program
             case 3:
                 {
                     LastPurchased(currentUser);
-                    break;
-                }
-            case 4:
-                {
-                    currentUser = null;
-                    Welcome();
                     break;
                 }
             case 0:
@@ -191,7 +188,7 @@ class Program
     public static void LastPurchased(User currentUser)
     {
         List<Food> purchase = fs.ViewLast(currentUser);
-        for (int i = 1; i > purchase.Count; i++)
+        for (int i = 0; i < purchase.Count; i++)
         {
             Console.WriteLine(purchase[i]);
         }

@@ -7,8 +7,8 @@ class UserUtil
     // //Constructor to give us menu options to start:
     public UserUtil()
     {
-        User user1 = new(idCounter++, "Owner", "Amanda", "Password1");
-        User user2 = new(idCounter++, "Customer", "Elizabeth", "Password2");
+        User user1 = new(idCounter++, "Amanda", "Password1", "Owner");
+        User user2 = new(idCounter++, "Elizabeth", "Password2", "User");
 
 
         logins = []; //sets the dictionary to an empty collection, instead of at the top, 
