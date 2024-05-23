@@ -1,23 +1,6 @@
 // //Place to keep functionality (starting off with 1:1 since movie app only has one model):
 class FoodService
 {
-    /*
-    What do we want in our service layer/major functionalities, our actions?
-    - purchase bakery items
-    - view items in cart = 'ViewCart'
-    - view items in inventory
-    - view availability of bakery items: count of what is left
-    - edit cart
-    - add to cart
-    - delete cart
-
-    *Trivial Services:
-    -   the service is already existing in our data layer so we will just CALL the repo method
-
-    **Don't think about UI, this is just the PROCCESS**
-    */
-
-
     FoodRepo fr;
     //FoodService fs = new();
     public FoodService(FoodRepo fr)

@@ -1,15 +1,7 @@
 class UserService
 {
-    /*Place to keep functionality (starting off with 1:1 since movie app only has one model):
-    
-    What do we want in our service layer/major functionalities?
-    - register
-    - user login
-    - user logout (?)
-
-    */
-    UserRepo ur;
-    public UserService(UserRepo ur)
+    UserRepo? ur;
+    public UserService(UserRepo? ur)
     {
         this.ur = ur;
     }
@@ -46,10 +38,9 @@ class UserService
         {
             if (name.UserName == userName && name.Password == password)
             {
-                return name; //returning indicates success
+                return name;
             }
         }
-        //If we make it this far, there was no match:
         Console.WriteLine("Not a valid user name and/or password.");
         return null;
     }

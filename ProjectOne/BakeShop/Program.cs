@@ -1,8 +1,8 @@
 ﻿using System;
 class Program
 {
-    static FoodService fs;
-    static UserService us;
+    static FoodService? fs;
+    static UserService? us;
     static User? currentUser = null;
 
     static void Main(string[] args)
@@ -17,11 +17,6 @@ class Program
         fs = new(fr);
 
         Welcome();
-        // fr = new FoodRepo();
-        // fs = new FoodService(fr);
-        // ur = new UserRepo();
-        // us = new UserService(ur);
-        //MainMenu();
     }
 
     //Methods
@@ -79,7 +74,7 @@ class Program
         newUser = us.Register(newUser);
         if (newUser != null)
         {
-            Console.WriteLine("Your user name, " + userName + " has been created. Welcome!");
+            Console.WriteLine("Your user name, " + userName + " has been created!");
         }
         else
         {
@@ -178,19 +173,15 @@ class Program
                 Console.WriteLine("Added to your cart: " + bakeryItem);
                 break;
             }
-            else
-            {
-                Console.WriteLine("Sorry, that item is not available.");
-            }
         }
     }
 
-    public static void LastPurchased(User currentUser)
+    public static void LastPurchased(User? currentUser)
     {
         List<Food> purchase = fs.ViewLast(currentUser);
-        for (int i = 0; i < purchase.Count; i++)
+        foreach (Food a in purchase)
         {
-            Console.WriteLine(purchase[i]);
+            Console.WriteLine(a);
         }
     }
 
@@ -213,38 +204,7 @@ class Program
             System.Console.WriteLine("Invalid Command - Please Enter a command 1-" + maxOption + "; or 0 to Quit");
             cmd = int.Parse(Console.ReadLine() ?? "0");
         }
-
-        //if input was already valid - it skips the if statement and just returns the value.
         return cmd;
     }
-
-    // public static void LogOut()
-    // {
-
-    // }
-    //     Exception handling, EDIT EDIT EDIT, copy/paste from class demo; would like logging
-    //     public static void HandlingExceptions()
-    // {
-    //     int[] numbers = [1, 2, 3];
-
-    //     System.Console.WriteLine("Enter an index: ");
-    //     string input = Console.ReadLine() ?? "0";
-    //     //Handling Exceptions: try-catch block
-    //     try
-    //     {
-    //         int index = int.Parse(input);
-    //         System.Console.WriteLine(numbers[index]);
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         System.Console.WriteLine(ex.Message);
-    //         System.Console.WriteLine(ex.StackTrace);
-    //     }
-
-    //     System.Console.WriteLine("Program End");
-
-    // }
-
-
 }
 

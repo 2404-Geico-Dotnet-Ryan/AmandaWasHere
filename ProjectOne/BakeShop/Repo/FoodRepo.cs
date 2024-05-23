@@ -63,9 +63,9 @@ class FoodRepo
         }
     }
 
-    public List<Food> ViewAll()
+    public List<Food>? ViewAll()
     {
-        List<Food> bakeryItems = [];
+        List<Food> bakeryItems = new();
         try
         {
             using SqlConnection connection = new(_connectionString);
@@ -78,8 +78,8 @@ class FoodRepo
 
             while (reader.Read())
             {
-                Food newItem = BuildItem(reader);
-                bakeryItems.Add(newItem);
+                Food allItems = BuildItem(reader);
+                bakeryItems.Add(allItems);
             }
 
             return bakeryItems;
@@ -125,6 +125,7 @@ class FoodRepo
             return null;
         }
     }
+
     public Food? DeleteItem(Food c)
     {
         try
@@ -168,61 +169,4 @@ class FoodRepo
 
         return newItem;
     }
-
-
-    // BakedGoods bakedGoods = new();
-
-    // public Food AddItem(Food a)
-    // {
-    //     a.Id = bakedGoods.idCounter++;
-
-    //     bakedGoods.bakeryItems.Add(a.Id, a);
-    //     return a;
-    // }
-    // public Food? ViewItem(int id)
-    // {
-    //     if (bakedGoods.bakeryItems.ContainsKey(id))
-    //     {
-    //         Food selectedItem = bakedGoods.bakeryItems[id];
-    //         return selectedItem;
-    //     }
-    //     else
-    //     {
-    //         Console.WriteLine("Sorry, we don't have that item.");
-    //         return null;
-    //     }
-    // }
-    // //VIEW CART
-    // public List<Food> ViewAll()
-    // {
-    //     return bakedGoods.bakeryItems.Values.ToList();
-    // }
-    // public Food? UpdateItem(Food b)
-    // {
-    //     try
-    //     {
-    //         bakedGoods.bakeryItems[b.Id] = b;
-    //         return b;
-    //     }
-    //     catch (Exception)
-    //     {
-    //         Console.WriteLine("Sorry, we don't have that item.");
-    //         return null;
-    //     }
-
-    // }
-    // public Food? DeleteItem(Food c)
-    // {
-    //     bool didRemove = bakedGoods.bakeryItems.Remove(c.Id);
-
-    //     if (didRemove)
-    //     {
-    //         return c;
-    //     }
-    //     else
-    //     {
-    //         Console.WriteLine("This item is not in your cart.");
-    //         return null;
-    //     }
-    // }
 }

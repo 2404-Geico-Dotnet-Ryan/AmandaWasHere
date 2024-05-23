@@ -69,7 +69,7 @@ class UserRepo
     }
 
     //VIEW ALL
-    public List<User> GetAllUsers()
+    public List<User>? GetAllUsers()
     {
         List<User> users = [];
 
