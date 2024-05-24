@@ -79,6 +79,7 @@ class Program
         else
         {
             Console.WriteLine("Registration was not successful, try again.");
+            Welcome();
         }
         MainMenu();
     }
